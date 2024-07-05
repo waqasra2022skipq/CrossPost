@@ -9,11 +9,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/auth/redirect', function() {
+Route::get('/auth/facebook', function() {
  return Socialite::driver('facebook')->redirect();
-});
+})->name('auth.facebook');
 
-Route::get('/auth/callback', function() {
+Route::get('/auth/facebook/callback', function() {
     $user = Socialite::driver('facebook')->user();
     Auth::login($user);
  
